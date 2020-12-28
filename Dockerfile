@@ -1,7 +1,7 @@
 FROM alpine:3
 RUN apk -v --update add \
-        python \
-        py-pip \
+        python3 \
+        py3-pip \
         groff \
         less \
         mailcap \
