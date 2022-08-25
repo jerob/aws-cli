@@ -3,7 +3,6 @@ FROM debian:stable-slim
 # These are included by default in most major distributions of Linux.
 RUN apt update && apt install \
         python3 \
-        py3-pip \
         groff \
         less \
         mailcap \
@@ -28,8 +27,7 @@ RUN unzip awscliv2.zip
 # By default, the files are all installed to /usr/local/aws-cli, and a symbolic link is created in /usr/local/bin.
 # The command includes sudo to grant write permissions to those directories.
 RUN ./aws/install
-RUN apk -v --purge del py-pip && \
-    rm /var/cache/apk/*
+RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 VOLUME /root/.aws
 VOLUME /app
 WORKDIR /app
