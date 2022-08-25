@@ -1,4 +1,4 @@
-name: Docker
+name: Docker-1.16.308
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -18,7 +18,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: aws-cli
-  DOCKER_TAGS: 1.25.60
+  DOCKER_TAGS: 1.16.308
 
 jobs:
   build:
