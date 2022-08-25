@@ -12,13 +12,13 @@ RUN apk -v --update add \
         gnupg
 COPY public_key.gpg .
 # Download the installation file
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.26.zip" -o "awscliv2.zip"
 # Import the AWS CLI public key with the following command.
 RUN gpg --import public_key.gpg
 # Download the AWS CLI signature file for the package you downloaded.
 # It has the same path and name as the .zip file it corresponds to, but has the extension .sig.
 # We save it to the current directory as a file named awscliv2.sig.
-RUN curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig
+RUN curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.26.zip.sig
 # Verify the signature, passing both the downloaded .sig and .zip file names as parameters to the gpg command.
 RUN gpg --verify awscliv2.sig awscliv2.zip
 # Unzip the installer.
