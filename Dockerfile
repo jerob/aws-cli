@@ -1,14 +1,14 @@
 FROM alpine:3 as builder
 
 ARG AWS_CLI_VERSION=2.7.26
-RUN apk add --no-cache python3 py3-virtualenv git unzip groff build-base libffi-dev cmake
+RUN apk add --no-cache python3 py3-pip py3-virtualenv git unzip groff build-base libffi-dev cmake
 RUN git clone --single-branch --depth 1 -b ${AWS_CLI_VERSION} https://github.com/aws/aws-cli.git
 
 WORKDIR aws-cli
 RUN sed -i'' 's/PyInstaller.*/PyInstaller==5.2/g' requirements-build.txt
 RUN python3 -m venv venv
 RUN . venv/bin/activate
-RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN ln -s /usr/bin/python3 /usr/bin/python && ln -s /usr/bin/pip3 /usr/bin/pip
 RUN scripts/installers/make-exe
 RUN unzip -q dist/awscli-exe.zip
 RUN aws/install --bin-dir /aws-cli-bin
