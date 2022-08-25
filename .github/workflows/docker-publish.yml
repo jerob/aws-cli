@@ -17,7 +17,8 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: aws-cli:1.25.60
+  IMAGE_NAME: aws-cli
+  DOCKER_TAGS: 1.25.60
 
 jobs:
   build:
