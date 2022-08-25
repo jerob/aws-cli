@@ -1,4 +1,4 @@
-FROM alpine:3 as download
+FROM alpine:3 as builder
 ENV AWSCLI_VERSION=2.7.26
 RUN apk add --no-cache \
     python3 \
