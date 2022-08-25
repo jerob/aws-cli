@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 # The AWS CLI uses glibc, groff, and less.
 # These are included by default in most major distributions of Linux.
-RUN apt update && apt install \
+RUN apt update && apt install -y \
         python3 \
         groff \
         less \
