@@ -8,6 +8,7 @@ WORKDIR aws-cli
 RUN sed -i'' 's/PyInstaller.*/PyInstaller==5.2/g' requirements-build.txt
 RUN python3 -m venv venv
 RUN . venv/bin/activate
+RUN RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN scripts/installers/make-exe
 RUN unzip -q dist/awscli-exe.zip
 RUN aws/install --bin-dir /aws-cli-bin
