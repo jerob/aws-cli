@@ -1,4 +1,4 @@
-FROM debian/stable-slim
+FROM debian:stable-slim
 # The AWS CLI uses glibc, groff, and less.
 # These are included by default in most major distributions of Linux.
 RUN apt install \
