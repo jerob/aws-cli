@@ -1,4 +1,4 @@
-name: Docker
+name: Docker-1.18.223
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -9,16 +9,16 @@ on:
   schedule:
     - cron: '37 14 1 * *'
   push:
-    branches: [ "master" ]
+    branches: [ "1.18.223" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "1.18.223" ]
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: aws-cli
-  DOCKER_TAGS: latest
+  DOCKER_TAGS: 1.18.223
 
 jobs:
   build:
