@@ -27,6 +27,9 @@ RUN unzip awscliv2.zip
 # By default, the files are all installed to /usr/local/aws-cli, and a symbolic link is created in /usr/local/bin.
 # The command includes sudo to grant write permissions to those directories.
 RUN ./aws/install
+# reduce image size: remove autocomplete and examples
+RUN rm -rf /usr/local/aws-cli/v2/current/dist/aws_completer /usr/local/aws-cli/v2/current/dist/awscli/data/ac.index /usr/local/aws-cli/v2/current/dist/awscli/examples
+RUN find /usr/local/aws-cli/v2/current/dist/awscli/botocore/data -name examples-1.json -delete
 
 FROM debian:stable-slim
 # ENV PATH="${PATH}:/usr/local/bin"
