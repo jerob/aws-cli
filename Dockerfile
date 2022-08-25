@@ -29,13 +29,17 @@ RUN unzip awscliv2.zip
 RUN ./aws/install
 
 FROM debian:stable-slim
-COPY --from=download /usr/local/aws-cli ./usr/local/
+# ENV PATH="${PATH}:/usr/local/bin"
+COPY --from=download /usr/local/aws-cli ./usr/local/aws-cli
+COPY --from=download /usr/local/bin/aws ./usr/local/bin/
 RUN apt update && apt install -y \
         python3 \
         groff \
         less \
-        mailcap
-RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+        mailcap && \
+        apt-get autoremove -y && apt-get clean && \
+        rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apt && \
+        rm -rf /usr/share/doc/ && rm -rf /usr/share/man && rm -rf /usr/share/locale/
 VOLUME /root/.aws
 VOLUME /app
 WORKDIR /app
