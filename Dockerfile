@@ -25,5 +25,5 @@ COPY --from=builder /aws-cli-bin/ /usr/local/bin/
 RUN apk -v --update --no-cache add \
         python3 \
         groff && \
-        rm /var/cache/apk/* && rm -rf /usr/share/doc/ && rm -rf /usr/share/man && rm -rf /usr/share/locale/
+        rm -rf /usr/share/doc/ && rm -rf /usr/share/man && rm -rf /usr/share/locale/
 ENTRYPOINT ["aws"]
