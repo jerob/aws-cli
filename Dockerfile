@@ -9,7 +9,7 @@ RUN apk -v --update add \
         mailcap \
         unzip \
         curl \
-        gpg
+        gnupg
 # Download the installation file
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 # Import the AWS CLI public key with the following command.
