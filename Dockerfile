@@ -5,9 +5,8 @@ RUN apk -v --update add \
         py-pip \
         groff \
         less \
-        mailcap \
-        && \
-    pip install --upgrade awscli==${AWSCLI_VERSION} && \
+        mailcap
+RUN pip install --upgrade awscli==${AWSCLI_VERSION} && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 VOLUME /root/.aws
