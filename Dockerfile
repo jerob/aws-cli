@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:stable-slim as download
 # The AWS CLI uses glibc, groff, and less.
 # These are included by default in most major distributions of Linux.
 RUN apt update && apt install -y \
@@ -27,6 +27,9 @@ RUN unzip awscliv2.zip
 # By default, the files are all installed to /usr/local/aws-cli, and a symbolic link is created in /usr/local/bin.
 # The command includes sudo to grant write permissions to those directories.
 RUN ./aws/install
+
+FROM debian:stable-slim
+COPY --from=download /usr/local/aws-cli ./usr/local/
 RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 VOLUME /root/.aws
 VOLUME /app
