@@ -1,7 +1,7 @@
-FROM alpine:3
+FROM debian/stable-slim
 # The AWS CLI uses glibc, groff, and less.
 # These are included by default in most major distributions of Linux.
-RUN apk -v --update add \
+RUN apt install \
         python3 \
         py3-pip \
         groff \
