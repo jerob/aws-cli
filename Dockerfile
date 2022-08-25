@@ -8,6 +8,7 @@ RUN apk -v --update add \
         less \
         mailcap \
         unzip \
+        curl \
         gpg
 # Download the installation file
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
