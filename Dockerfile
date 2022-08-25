@@ -1,9 +1,8 @@
-FROM alpine:3
+FROM debian:stable-slim
 # The AWS CLI uses glibc, groff, and less.
 # These are included by default in most major distributions of Linux.
-RUN apk -v --update add \
+RUN apt update && apt install -y \
         python3 \
-        py3-pip \
         groff \
         less \
         mailcap \
@@ -28,8 +27,7 @@ RUN unzip awscliv2.zip
 # By default, the files are all installed to /usr/local/aws-cli, and a symbolic link is created in /usr/local/bin.
 # The command includes sudo to grant write permissions to those directories.
 RUN ./aws/install
-RUN apk -v --purge del py-pip && \
-    rm /var/cache/apk/*
+RUN rm -f /aws/ && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 VOLUME /root/.aws
 VOLUME /app
 WORKDIR /app
