@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     libffi-dev \
     openssl-dev \
     && curl -L https://github.com/aws/aws-cli/archive/refs/tags/${AWSCLI_VERSION}.tar.gz | tar -xz \
-    && cd awscli-${AWSCLI_VERSION} \
+    && cd aws-cli-${AWSCLI_VERSION} \
     && ./configure --prefix=/opt/aws-cli/ --with-download-deps \
     && make \
     && make install
