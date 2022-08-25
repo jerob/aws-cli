@@ -1,7 +1,7 @@
 FROM alpine:3 as builder
 
 ARG AWS_CLI_VERSION=2.7.26
-RUN apk add --no-cache python3 py3-pip py3-virtualenv git unzip groff build-base libffi-dev cmake
+RUN apk add --no-cache python3 python3-dev py3-pip py3-virtualenv git unzip groff build-base libffi-dev cmake
 RUN git clone --single-branch --depth 1 -b ${AWS_CLI_VERSION} https://github.com/aws/aws-cli.git
 
 WORKDIR aws-cli
