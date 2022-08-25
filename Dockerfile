@@ -30,6 +30,11 @@ RUN ./aws/install
 
 FROM debian:stable-slim
 COPY --from=download /usr/local/aws-cli ./usr/local/
+RUN apt update && apt install -y \
+        python3 \
+        groff \
+        less \
+        mailcap
 RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 VOLUME /root/.aws
 VOLUME /app
