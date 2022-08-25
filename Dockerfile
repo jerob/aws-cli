@@ -1,8 +1,8 @@
 FROM alpine:3
 ENV AWSCLI_VERSION "1.18.223"
 RUN apk -v --update add \
-        python \
-        py-pip \
+        python3 \
+        py3-pip \
         groff \
         less \
         mailcap \
